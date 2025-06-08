@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Core", "ForgottenToDoApp.Core\ForgottenToDoApp.Core.csproj", "{A738FC41-5A8A-4AB5-B670-F322A821F86B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Infrastructure", "ForgottenToDoApp.Infrastructure\ForgottenToDoApp.Infrastructure.csproj", "{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.MauiApp", "ForgottenToDoApp.MauiApp\ForgottenToDoApp.MauiApp.csproj", "{B9AA843A-6845-4623-86F5-026BF319426B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9AA843A-6845-4623-86F5-026BF319426B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9AA843A-6845-4623-86F5-026BF319426B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9AA843A-6845-4623-86F5-026BF319426B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9AA843A-6845-4623-86F5-026BF319426B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

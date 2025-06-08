@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ForgottenToDoApp.MauiApp.ViewModels"
+             x:Class="ForgottenToDoApp.MauiApp.Views.DashboardPage"
+             Title="Dashboard">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="VerticalStackLayout">
+                <Setter Property="Padding"
+                        Value="10"/>
+                <Setter Property="Spacing"
+                        Value="5"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="16"/>
+            </Style>
+            <Style x:Key="SectionTitle"
+                    TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="20"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+                <Setter Property="Margin"
+                        Value="0,10,0,5"/>
+            </Style>
+            <Style x:Key="TaskLabel"
+                    TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="14"/>
+                <Setter Property="Margin"
+                        Value="5,0"/>
+            </Style>
+            <Style x:Key="NoTasksLabel"
+                    TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="16"/>
+                <Setter Property="TextColor"
+                        Value="#888"/>
+                <Setter Property="HorizontalOptions"
+                        Value="Center"/>
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                    IsVisible="{Binding IsLoading}"
+                    Color="Purple"/>
+
+            <Label Text="Tareas Vencidas"
+                    Style="{StaticResource SectionTitle}"/>
+            <CollectionView ItemsSource="{Binding OverdueTasks}"
+                    IsVisible="{Binding OverdueTasks.Any}">
+                <CollectionView.EmptyView>
+                    <Label Text="¡Felicidades! No hay tareas vencidas."
+                            Style="{StaticResource NoTasksLabel}"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5"
+                                Padding="10"
+                                CornerRadius="5"
+                                HasShadow="True">
+                            <Frame.Resources>
+                                <ResourceDictionary>
+                                    <Color x:Key="OverdueBackgroundColor">#FFDDDD</Color>
+                                    <Color x:Key="OverdueBorderColor">#FF0000</Color>
+                                </ResourceDictionary>
+                            </Frame.Resources>
+                            <Frame.BackgroundColor Value="{StaticResource OverdueBackgroundColor}"/>
+                            <Frame.BorderColor Value="{StaticResource OverdueBorderColor}"/>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Titulo}"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource TaskLabel}"/>
+                                <Label Text="{Binding FechaVencimiento, StringFormat='Fecha Vencimiento: {0:dd/MM/yyyy}'}"
+                                        Style="{StaticResource TaskLabel}"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Tareas Proximas a Vencer"
+                    Style="{StaticResource SectionTitle}"/>
+            <CollectionView ItemsSource="{Binding UpcomingTasks}"
+                    IsVisible="{Binding UpcomingTasks.Any}">
+                <CollectionView.EmptyView>
+                    <Label Text="No hay tareas proximas a vencer."
+                            Style="{StaticResource NoTasksLabel}"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5"
+                                Padding="10"
+                                CornerRadius="5"
+                                HasShadow="True">
+                            <Frame.Resources>
+                                <ResourceDictionary>
+                                    <Color x:Key="UpcomingBackgroundColor">#E0F7FA</Color>
+                                    <Color x:Key="UpcomingBorderColor">#00BCD4</Color>
+                                </ResourceDictionary>
+                            </Frame.Resources>
+                            <Frame.BackgroundColor Value="{StaticResource UpcomingBackgroundColor}"/>
+                            <Frame.BorderColor Value="{StaticResource UpcomingBorderColor}"/>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Titulo}"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource TaskLabel}"/>
+                                <Label Text="{Binding FechaVencimiento, StringFormat='Fecha Vencimiento: {0:dd/MM/yyyy}'}"
+                                        Style="{StaticResource TaskLabel}"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Refrescar Dashboard"
+                    Command="{Binding LoadDashboardDataCommand}"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

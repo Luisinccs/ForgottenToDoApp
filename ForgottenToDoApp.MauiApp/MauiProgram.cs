@@ -42,9 +42,9 @@ public static class MauiProgram {
 #if DEBUG
 		builder.Logging.AddDebug();
 		var resourceNames = a.GetManifestResourceNames();
-		foreach (var name in resourceNames) {
-			Console.WriteLine($"Recurso incrustado encontrado: {name}");
-		}
+		// foreach (var name in resourceNames) {
+		// 	Console.WriteLine($"Recurso incrustado encontrado: {name}");
+		// }
 #endif
 		// --- Registro de Servicios Personalizados ---
 
@@ -57,7 +57,8 @@ public static class MauiProgram {
 			throw new Exception("Null path");
 		}
 
-		Console.WriteLine($"mac path: {sharePathMac}");
+		// Console.WriteLine($"mac path: {sharePathMac}");
+		Console.WriteLine($"Windows path: {sharePathWindows}");
 
 		// Determinar la ruta del NAS en tiempo de ejecucion de la aplicacion MAUI
 		string nasSharePath;
@@ -82,8 +83,6 @@ public static class MauiProgram {
 		// Registrar los repositorios
 		builder.Services.AddScoped<IToDoTaskRepository, ToDoTaskRepository>();
 		builder.Services.AddScoped<ITaskGroupRepository, TaskGroupRepository>(); // Un solo registro es suficiente
-
-
 
 		// Registrar los casos de uso
 		builder.Services.AddScoped<CrearNuevaTareaUseCase>();

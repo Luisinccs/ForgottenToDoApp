@@ -12,45 +12,48 @@ namespace ForgottenToDoApp.Infrastructure.Data;
 /// <remarks>
 /// Lee la configuracion de rutas del NAS desde appsettings.json para fines de diseno.
 /// </remarks>
-public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
-{
-    /// <sum>Crea una nueva instancia de DbContext para tiempo de diseno.</sum>
-    /// <param name="args">Argumentos de la linea de comandos.</param>
-    /// <returns>Una nueva instancia de AppDbContext.</returns>
-    public AppDbContext CreateDbContext(string[] args)
-    {
-        var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext> {
+	/// <sum>Crea una nueva instancia de DbContext para tiempo de diseno.</sum>
+	/// <param name="args">Argumentos de la linea de comandos.</param>
+	/// <returns>Una nueva instancia de AppDbContext.</returns>
+	public AppDbContext CreateDbContext(string[] args) {
+		var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
-        // Configurar la lectura de appsettings.json para tiempo de diseno
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory()) // Establece la base donde buscar appsettings.json
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
+		// --- DEPURACION: VERIFICA EL DIRECTORIO ACTUAL ---
+        Console.WriteLine($"Directorio actual (Directory.GetCurrentDirectory()): {Directory.GetCurrentDirectory()}");
+        Console.WriteLine($"Directorio base de la aplicacion (AppContext.BaseDirectory): {AppContext.BaseDirectory}");
+        // --------------------------------------------------
 
-        var nasSettingsSection = configuration.GetSection("NasSettings");
-        var sharePathWindows = nasSettingsSection["SharePathWindows"];
-        var sharePathMac = nasSettingsSection["SharePathMac"];
+		// Configurar la lectura de appsettings.json para tiempo de diseno
+		var configuration = new ConfigurationBuilder()
+			.SetBasePath(AppContext.BaseDirectory)
+			//.SetBasePath(Directory.GetCurrentDirectory()) // Establece la base donde buscar appsettings.json
+			.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+			.Build();
 
-        string nasPathForDesignTime;
+		var nasSettingsSection = configuration.GetSection("NasSettings");
+		var sharePathWindows = nasSettingsSection["SharePathWindows"];
+		var sharePathMac = nasSettingsSection["SharePathMac"];
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            nasPathForDesignTime = sharePathWindows;
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            nasPathForDesignTime = sharePathMac;
-        }
-        else
-        {
-            throw new PlatformNotSupportedException("La plataforma no es soportada para la operacion de herramientas de EF Core en tiempo de diseno.");
-        }
+		string nasPathForDesignTime;
 
-        var nasPathProvider = new NasPathProvider(nasPathForDesignTime);
-        var dbPath = nasPathProvider.GetDatabasePath();
+		if (sharePathMac is null || sharePathWindows is null) {
+			throw new Exception("Null path");
+		}
 
-        optionsBuilder.UseSqlite($"Filename={dbPath}");
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+			nasPathForDesignTime = sharePathWindows;
+		} else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+			nasPathForDesignTime = sharePathMac;
+		} else {
+			throw new PlatformNotSupportedException("La plataforma no es soportada para la operacion de herramientas de EF Core en tiempo de diseno.");
+		}
 
-        return new AppDbContext(optionsBuilder.Options);
-    }
+		var nasPathProvider = new NasPathProvider(nasPathForDesignTime);
+		var dbPath = nasPathProvider.GetDatabasePath();
+
+		optionsBuilder.UseSqlite($"Filename={dbPath}");
+
+		return new AppDbContext(optionsBuilder.Options);
+	}
 }

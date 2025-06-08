@@ -1,8 +1,7 @@
 <!-- Default properties for Dual components projects -->
 <Project>
-    <Import Project="../Directory.Build.props" />
     <PropertyGroup>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
         <Authors>Luis D'Andrea</Authors>
         <ImplicitUsings>enable</ImplicitUsings>
         <LangVersion>12.0</LangVersion>

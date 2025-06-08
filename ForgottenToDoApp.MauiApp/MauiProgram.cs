@@ -1,4 +1,4 @@
-﻿// 2025-06-07
+// 2025-06-07
 
 using ForgottenToDoApp.Core.Interfaces; // Para IToDoTaskRepository, ITaskGroupRepository
 using ForgottenToDoApp.Core.UseCases; // Para los Casos de Uso
@@ -79,7 +79,7 @@ public static class MauiProgram {
 			var dbPath = nasPathProvider.GetDatabasePath();
 			options.UseSqlite($"Filename={dbPath}");
 		});
-
+		
 		// Registrar los repositorios
 		builder.Services.AddScoped<IToDoTaskRepository, ToDoTaskRepository>();
 		builder.Services.AddScoped<ITaskGroupRepository, TaskGroupRepository>(); // Un solo registro es suficiente
@@ -91,15 +91,20 @@ public static class MauiProgram {
 		builder.Services.AddScoped<ActualizarTareaUseCase>();
 		builder.Services.AddScoped<EliminarTareaUseCase>();
 		builder.Services.AddScoped<ObtenerTodasLasTareasUseCase>();
+		builder.Services.AddTransient<ObtenerTareaPorIdUseCase>();
 		builder.Services.AddScoped<CrearNuevoGrupoUseCase>();
 		builder.Services.AddScoped<ObtenerTodosLosGruposUseCase>();
 
 		// Registrar ViewModels
-		builder.Services.AddScoped<DashboardViewModel>();
+        builder.Services.AddTransient<DashboardViewModel>();
+        builder.Services.AddTransient<TaskListViewModel>(); 
+		builder.Services.AddTransient<TaskDetailViewModel>();
 
-		// Registrar Vistas (Pages)
-		builder.Services.AddScoped<DashboardPage>();
-
+        // Registrar Vistas
+		builder.Services.AddTransient<DashboardPage>();
+        builder.Services.AddTransient<TaskListPage>(); 
+		builder.Services.AddTransient<TaskDetailPage>();
+		
 		// --- Fin del Registro de Servicios Personalizados ---
 
 		return builder.Build();

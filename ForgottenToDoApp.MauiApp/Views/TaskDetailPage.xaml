@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:System="clr-namespace:System;assembly=netstandard"
+             xmlns:viewmodels="clr-namespace:ForgottenToDoApp.MauiApp.ViewModels"
+             xmlns:models="clr-namespace:ForgottenToDoApp.Core.Entities;assembly=ForgottenToDoApp.Core"
+             xmlns:enums="clr-namespace:ForgottenToDoApp.Core.Enums;assembly=ForgottenToDoApp.Core"
+             x:Class="ForgottenToDoApp.MauiApp.Views.TaskDetailPage"
+             Title="{Binding CurrentTask.Titulo, TargetNullValue='Nueva Tarea'}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Guardar"
+                Command="{Binding SaveTaskCommand}"/>
+        <ToolbarItem Text="Cancelar"
+                Command="{Binding CancelTaskCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15"
+                Padding="20">
+
+            <Label Text="Título de la Tarea"
+                    Style="{StaticResource Headline}"/>
+            <Entry Placeholder="Ej: Comprar víveres"
+                    Text="{Binding CurrentTask.Titulo}"/>
+
+            <Label Text="Descripción"
+                    Style="{StaticResource Headline}"/>
+            <Editor Placeholder="Ej: Leche, pan, huevos, fruta..."
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    Text="{Binding CurrentTask.Descripcion}"/>
+
+            <Label Text="Fecha de Vencimiento"
+                    Style="{StaticResource Headline}"/>
+            <DatePicker Date="{Binding CurrentTask.FechaVencimiento, TargetNullValue={x:Static System:DateTime.Now}}"
+                        Format="dd/MM/yyyy"
+                        MinimumDate="{x:Static System:DateTime.Now}"/>
+
+            
+            <!-- <VerticalStackLayout Spacing="5" Margin="0,10">
+                <Label Text="Duración Estimada (minutos):" FontAttributes="Bold" />
+                <Entry Text="{Binding CurrentTask.DuracionMinutos, Mode=TwoWay, StringFormat='{0:N0}'}"
+                       Keyboard="Numeric"
+                       Placeholder="Ej: 60"
+                       HorizontalOptions="FillAndExpand" />
+            </VerticalStackLayout>
+            
+            <Label Text="Prioridad:" FontAttributes="Bold" />
+            <Picker SelectedItem="{Binding CurrentTask.Prioridad}"
+                    Title="Selecciona la prioridad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type enums:TaskPriority}">
+                        <enums:TaskPriority>Low</enums:TaskPriority>
+                        <enums:TaskPriority>Medium</enums:TaskPriority>
+                        <enums:TaskPriority>High</enums:TaskPriority>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker> -->
+
+            <Button Text="Guardar Tarea" Command="{Binding SaveTaskCommand}" />
+            <Button Text="Eliminar Tarea" Command="{Binding DeleteTaskCommand}" BackgroundColor="Red" IsVisible="{Binding IsEditingExistingTask}" />
+        
+        
+
+            <Label Text="Prioridad"
+                    Style="{StaticResource Headline}"/>
+            <Picker SelectedItem="{Binding CurrentTask.Prioridad}"
+                    Title="Selecciona Prioridad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type enums:TaskPriority}">
+                        <enums:TaskPriority>Low</enums:TaskPriority>
+                        <enums:TaskPriority>Medium</enums:TaskPriority>
+                        <enums:TaskPriority>High</enums:TaskPriority>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Estado"
+                    Style="{StaticResource Headline}"/>
+            <Picker SelectedItem="{Binding CurrentTask.Estado}"
+                    Title="Selecciona Estado">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type enums:TaskStatus}">
+                        <enums:TaskStatus>Pending</enums:TaskStatus>
+                        <enums:TaskStatus>InProgress</enums:TaskStatus>
+                        <enums:TaskStatus>Completed</enums:TaskStatus>
+                        <enums:TaskStatus>Postponed</enums:TaskStatus>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <HorizontalStackLayout Spacing="10"
+                    VerticalOptions="Center">
+                <Label Text="¿Es Repetitiva?"
+                        VerticalTextAlignment="Center"
+                        Style="{StaticResource Headline}"/>
+                <Switch IsToggled="{Binding CurrentTask.EsRepetitiva}"/>
+            </HorizontalStackLayout>
+
+            <StackLayout IsVisible="{Binding CurrentTask.EsRepetitiva}">
+                <Label Text="Frecuencia de Repetición"
+                        Style="{StaticResource Headline}"/>
+                <Picker SelectedItem="{Binding CurrentTask.FrecuenciaRepeticion}"
+                        Title="Selecciona Frecuencia">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type enums:RepetitionFrequency}">
+                            <enums:RepetitionFrequency>None</enums:RepetitionFrequency>
+                            <enums:RepetitionFrequency>Daily</enums:RepetitionFrequency>
+                            <enums:RepetitionFrequency>Weekly</enums:RepetitionFrequency>
+                            <enums:RepetitionFrequency>Monthly</enums:RepetitionFrequency>
+                            <enums:RepetitionFrequency>Annually</enums:RepetitionFrequency>
+                            <enums:RepetitionFrequency>Custom</enums:RepetitionFrequency>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,7 +1,8 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ForgottenToDoApp.MauiApp.Views" Shell.FlyoutBehavior="Disabled"
+             xmlns:local="clr-namespace:ForgottenToDoApp.MauiApp"
+             xmlns:converters="clr-namespace:ForgottenToDoApp.MauiApp.Converters"
              x:Class="ForgottenToDoApp.MauiApp.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,12 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <converters:TaskStatusToIconConverter x:Key="TaskStatusToIconConverter" />
+            <converters:TaskStatusToTextConverter x:Key="TaskStatusToTextConverter" />
+            <converters:TaskPriorityToColorConverter x:Key="TaskPriorityToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

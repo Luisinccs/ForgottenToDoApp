@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ForgottenToDoApp.MauiApp.ViewModels"
+             xmlns:models="clr-namespace:ForgottenToDoApp.Core.Entities;assembly=ForgottenToDoApp.Core"
+             xmlns:enums="clr-namespace:ForgottenToDoApp.Core.Enums;assembly=ForgottenToDoApp.Core"
+             xmlns:converters="clr-namespace:ForgottenToDoApp.MauiApp.Converters"
+             x:Class="ForgottenToDoApp.MauiApp.Views.TaskListPage"
+             Title="Lista de Tareas">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <converters:TaskPriorityToColorConverter x:Key="TaskPriorityToColorConverter" />
+            <converters:TaskStatusToIconConverter x:Key="TaskStatusToIconConverter" />
+            <converters:TaskStatusToTextConverter x:Key="TaskStatusToTextConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Recargar"
+                     Command="{Binding LoadTasksCommand}"
+                     IconImageSource="refresh_icon.png"/>
+        <ToolbarItem Text="Nueva Tarea"
+                     Command="{Binding GoToTaskDetailCommand}"
+                     IconImageSource="add_icon.png"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *">
+        <StackLayout Grid.Row="0"
+                     Orientation="Horizontal"
+                     Padding="10"
+                     Spacing="10"
+                     HorizontalOptions="Center">
+            <Label Text="Mostrar Tareas Completadas:"
+                   VerticalOptions="Center"/>
+            <Switch IsToggled="{Binding ShowCompletedTasks}"/>
+        </StackLayout>
+
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Color="{AppThemeBinding Dark=White, Light=Black}"/>
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding VisibleTasks}"
+                        SelectionMode="None"
+                        IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}">
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <Label Text="No hay tareas para mostrar."
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           TextColor="Gray"/>
+                </ContentView>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ToDoTask">
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItemView CommandParameter="{Binding}"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:TaskListViewModel}}, Path=ToggleTaskCompletionCommand}">
+                                    <Grid WidthRequest="60"
+                                          HeightRequest="60"
+                                          BackgroundColor="{AppThemeBinding Dark=Green, Light=LimeGreen}"
+                                          Padding="5">
+                                        <Image Source="{Binding Estado, Converter={StaticResource TaskStatusToIconConverter}}"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="{Binding Estado, Converter={StaticResource TaskStatusToTextConverter}}"
+                                               FontSize="Small"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="End"/>
+                                    </Grid>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Frame HasShadow="True"
+                               CornerRadius="10"
+                               Margin="10,5"
+                               Padding="15"
+                               BackgroundColor="{AppThemeBinding Dark=DarkSlateGray, Light=White}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:TaskListViewModel}}, Path=GoToTaskDetailCommand}"
+                                                      CommandParameter="{Binding}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+                                  ColumnDefinitions="*, Auto"
+                                  ColumnSpacing="10"
+                                  RowSpacing="5">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{Binding Titulo}"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                                
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Prioridad, StringFormat='{0}'}"  TextColor="{Binding Prioridad, Converter={StaticResource TaskPriorityToColorConverter}}"
+                                       FontSize="Small"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Start"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.ColumnSpan="2"
+                                       Text="{Binding Descripcion}"
+                                       FontSize="Small"
+                                       TextColor="Gray"
+                                       MaxLines="2"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <StackLayout Grid.Row="2"
+                                             Grid.ColumnSpan="2"
+                                             Orientation="Horizontal"
+                                             Spacing="5"
+                                             HorizontalOptions="Start"
+                                             IsVisible="{Binding FechaVencimiento, Converter={StaticResource IsNotNullConverter}}">
+                                    <Image Source="calendar_icon.png"
+                                           HeightRequest="16"
+                                           WidthRequest="16"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding FechaVencimiento, StringFormat='Fecha Vencimiento: {0:dd/MM/yyyy}'}"
+                                           FontSize="Small"
+                                           TextColor="LightGray"
+                                           VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Label Grid.Row="2"
+                                       Grid.ColumnSpan="2"
+                                       Text="Sin Fecha Vencimiento"
+                                       FontSize="Small"
+                                       TextColor="LightGray"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"
+                                       IsVisible="{Binding FechaVencimiento, Converter={StaticResource IsNotNullConverter}, ConverterParameter='Inverse'}" />
+
+                                <StackLayout Grid.Row="3"
+                                             Grid.ColumnSpan="2"
+                                             Orientation="Horizontal"
+                                             Spacing="5"
+                                             HorizontalOptions="Start">
+                                    <Image Source="repeat_icon.png"
+                                           HeightRequest="16"
+                                           WidthRequest="16"
+                                           IsVisible="{Binding EsRepetitiva}"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding ProximaFechaRepeticion, StringFormat='Próx. Repet.: {0:MMM dd, &#x26AC;}'}"
+                                           FontSize="Small"
+                                           TextColor="LightGray"
+                                           IsVisible="{Binding ProximaFechaRepeticion, Converter={StaticResource IsNotNullConverter}}"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="No Repetitiva"
+                                           FontSize="Small"
+                                           TextColor="LightGray"
+                                           IsVisible="{Binding EsRepetitiva, Converter={StaticResource InverseBooleanConverter}}"
+                                           VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,5 +1,5 @@
 // 2025-06-07
-
+using System;
 using ForgottenToDoApp.Core.Enums;
 
 namespace ForgottenToDoApp.Core.Entities;
@@ -51,4 +51,7 @@ public class ToDoTask {
 
 	/// <sum>Indica si la tarea es opcional y su incumplimiento no es acumulativo.</sum>
 	public bool EsDescartable { get; set; }
+
+	/// <sum>Duracion estimada de la tarea.</sum>
+	public TimeSpan DuracionEstimada { get; set; } = TimeSpan.FromHours(1); // Valor por defecto de 1 hora
 }

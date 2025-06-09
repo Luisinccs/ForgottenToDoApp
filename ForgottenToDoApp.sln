@@ -1,35 +1,34 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgottenToDoApp.Core", "ForgottenToDoApp.Core\ForgottenToDoApp.Core.csproj", "{A738FC41-5A8A-4AB5-B670-F322A821F86B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Core", "Core\ForgottenToDoApp.Core.csproj", "{B2435139-CCA9-4137-BD66-DA0EE92E4661}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgottenToDoApp.Infrastructure", "ForgottenToDoApp.Infrastructure\ForgottenToDoApp.Infrastructure.csproj", "{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.App.Maui", "App.Maui\ForgottenToDoApp.App.Maui.csproj", "{0AEFA063-0AEA-462D-983B-5C5DA6F57DF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgottenToDoApp.MauiApp", "ForgottenToDoApp.MauiApp\ForgottenToDoApp.MauiApp.csproj", "{B9AA843A-6845-4623-86F5-026BF319426B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.App.Maui.Tests", "App.Maui.Tests\ForgottenToDoApp.App.Maui.Tests.csproj", "{56C17424-0AA4-42B4-81B6-1E3E63BBA10B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEFA063-0AEA-462D-983B-5C5DA6F57DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEFA063-0AEA-462D-983B-5C5DA6F57DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEFA063-0AEA-462D-983B-5C5DA6F57DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEFA063-0AEA-462D-983B-5C5DA6F57DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C17424-0AA4-42B4-81B6-1E3E63BBA10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C17424-0AA4-42B4-81B6-1E3E63BBA10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C17424-0AA4-42B4-81B6-1E3E63BBA10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C17424-0AA4-42B4-81B6-1E3E63BBA10B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A738FC41-5A8A-4AB5-B670-F322A821F86B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F3E59C7-9DBB-420F-B441-8467BD5D56C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9AA843A-6845-4623-86F5-026BF319426B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

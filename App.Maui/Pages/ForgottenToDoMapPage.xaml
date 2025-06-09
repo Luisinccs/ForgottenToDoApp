@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ForgottenToDo.Core.ViewModels;assembly=ForgottenToDo.Core"
+             x:DataType="viewmodels:IForgottenToDoMapViewModel"
+             x:Class="ForgottenToDo.UI.Maui.ForgottenToDoMapPage"
+             Title="Mi Universo de Tareas">
+
+    <VerticalStackLayout Padding="20" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <Label Text="Bienvenido a tu Universo de Tareas"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Button Text="Cargar Mapa"
+                Command="{Binding CargarMapaCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0" />
+
+        <Label Text="{Binding AreasDeEnfoque.Count, StringFormat='Áreas cargadas: {0}'}"
+               HorizontalOptions="Center"
+               FontSize="18"
+               Margin="0,10,0,0"/>
+
+    </VerticalStackLayout>
+</ContentPage>

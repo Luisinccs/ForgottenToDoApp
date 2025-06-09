@@ -1,8 +1,9 @@
 // 2025-06-08
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
-namespace ForgottenToDo.Core.ViewModels;
+using System.Collections.ObjectModel;
+ using System.Windows.Input; 
+
+namespace ForgottenToDoApp.ViewModels;
 
 /// <summary>Interfaz para el ViewModel del mapa principal de ForgottenToDoApp.</summary>
 public interface IForgottenToDoMapViewModel {

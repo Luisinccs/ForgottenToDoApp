@@ -4,7 +4,18 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "name": ".NET MAUI Test",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\App.Maui.Tests\\ForgottenToDo.App.Maui.Tests.csproj"
+        },
+        {
+            "name": ".NET MAUI App",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\App.Maui\\ForgottenToDo.App.Maui.csproj"
+        },
         {
             "name": "C#: ForgottenToDoApp.MauiApp [Windows Machine]",
             "type": "dotnet",

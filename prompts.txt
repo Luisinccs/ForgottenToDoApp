@@ -1,0 +1,24 @@
+Bien, vamos a suponer que deseo acoplar esta vista de mapa mental en la aplicación ForgottenToDoApp; de forma tal que cada proyecto o aspecto que tenga tareas, vamos a llamar a esto cluster, sea una rama de ese mapa mental, al centro hay que ponerle un nombre. La idea es poder editar graficamente estos objetos, el centro en el centro del canvas y cada uno de los clusters con su subcluster se vea ramificado (Sin incluir las tareas), al tocarlos se podría cambiar la vista a la lista de ese cluster (Buscale un nombre mejor a ese concepto de cluster).
+Ejemplo:
+Centro
+    - Proyectos (cluster)
+        - HactivePro (cluster)
+            - Tareas repetitivas 
+                - Contenido del artículo (tarea repetitiva)
+                - Ilustracion (tarea repetitiva)
+                - Actualizar el servidor (tarea repetitiva)
+            - Tareas de una sola vez
+                - Diseño de la interface (tarea)
+                - Desarrollo del landing page (tarea)
+    - Aprendizaje (cluster)
+        - Hosting (cluster)
+        - Blogs (cluster)
+            - Aprender sobre como visualizar las métricas de tráfico (tarea)
+            - Averiguar las estrategias de monetización de un blog (tarea)
+    - Tareas personales (cluster)
+        - Administración (cluster)
+            - Pagos y cobranzas (cluster)
+                - Electricidad (tarea repetitiva)
+                - Condominio (tarea repetitiva)
+
+Bien, por ahí va la cosa, era solo una idea, mas adelante la desarrollaremos; por ahora vamos a seguir entonces con el proyecto ForgottenToDoApp. Primero que nada quiero hacer un refactor. Los ViewModels, quiero sacarlos de la aplicación, de hecho quiero sacar todo de la aplicación, los viewmodels deben ir en el core, despues debe haber un proyecto con las vistas (puede ser maui o blazor) las vistas unicamente deben tener referencia al IViewModel, no al ViewModel, para que sean lo mas fácil de probar de forma aislada, y un proyecto de pruebas para las vistas (una aplicación maui de momento). Entonces hacemos ese refactor y vamos haciendo las vistas una por una.

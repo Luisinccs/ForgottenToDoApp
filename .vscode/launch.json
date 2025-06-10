@@ -20,7 +20,7 @@
             "name": "C#: ForgottenToDoApp.MauiApp [Windows Machine]",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}\\ForgottenToDoApp.MauiApp\\ForgottenToDoApp.MauiApp.csproj",
+             "projectPath": "${workspaceFolder}\\App.Maui\\ForgottenToDo.App.Maui.csproj",
             "launchConfigurationId": "windowsmachine"
         }
     ]

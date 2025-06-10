@@ -34,3 +34,6 @@ Bien ya que podríamos hacer de esto una aplicación tanto nativa como web, voy 
 .App.Maui
 .App.Blazor
 
+Bien, esta sería la vista de listas; a la derecha puedes ver un arbol donde se muestran las areas con las sub-areas, estando resaltada el area que presenta las tareas mostradas. A la derecha se presentan las tareas correspondientes al area resaltada, de momento solo se presenta el título de la tarea y el circulo para marcar como realizada; faltaría agregar la fecha-hora tentativa (si es que fué asignada) así como la duración. Al hacer tab o click, se debe presentar el formulario con los detalles de la tarea, bien sea de forma emergente o en una vista nueva, o adjunto en la pantalla, dependiendo del dispositivo
+
+Bien, pasemos ahora a la vista de calendario, 

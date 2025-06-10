@@ -22,3 +22,15 @@ Centro
                 - Condominio (tarea repetitiva)
 
 Bien, por ahí va la cosa, era solo una idea, mas adelante la desarrollaremos; por ahora vamos a seguir entonces con el proyecto ForgottenToDoApp. Primero que nada quiero hacer un refactor. Los ViewModels, quiero sacarlos de la aplicación, de hecho quiero sacar todo de la aplicación, los viewmodels deben ir en el core, despues debe haber un proyecto con las vistas (puede ser maui o blazor) las vistas unicamente deben tener referencia al IViewModel, no al ViewModel, para que sean lo mas fácil de probar de forma aislada, y un proyecto de pruebas para las vistas (una aplicación maui de momento). Entonces hacemos ese refactor y vamos haciendo las vistas una por una.
+
+en un fragmento de código (no canvas editable) con formato markdown para que pueda copiarlo y pegarlo;
+
+Bien ya que podríamos hacer de esto una aplicación tanto nativa como web, voy a replantear la arquitectura de los ensamblados, te paso la configuración preliminar 
+.Core
+.Data
+.ViewModels
+.Views.Maui
+.Views.Blazor
+.App.Maui
+.App.Blazor
+

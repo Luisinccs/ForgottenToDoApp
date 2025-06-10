@@ -8,20 +8,8 @@
             "name": ".NET MAUI Test",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}\\App.Maui.Tests\\ForgottenToDo.App.Maui.Tests.csproj"
-        },
-        {
-            "name": ".NET MAUI App",
-            "type": "dotnet",
-            "request": "launch",
-            "projectPath": "${workspaceFolder}\\App.Maui\\ForgottenToDo.App.Maui.csproj"
-        },
-        {
-            "name": "C#: ForgottenToDoApp.MauiApp [Windows Machine]",
-            "type": "dotnet",
-            "request": "launch",
-             "projectPath": "${workspaceFolder}\\App.Maui\\ForgottenToDo.App.Maui.csproj",
-            "launchConfigurationId": "windowsmachine"
+            "projectPath": "${workspaceFolder}\\Views.Maui.Tests\\ForgottenToDoApp.Views.Maui.Tests.csproj"
         }
+
     ]
 }

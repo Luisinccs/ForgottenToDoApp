@@ -1,0 +1,131 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ForgottenToDoApp.ViewModels;assembly=ForgottenToDoApp.Core"
+             x:Class="ForgottenToDoApp.Views.Maui.MapPage"
+             x:DataType="viewmodels:IMapViewModel"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0"
+                BackgroundColor="#2D3B45"
+                Padding="10">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Button Text="☰"
+                        FontSize="24"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"/>
+                <Label Text="{Binding Title}"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                       HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Column="1"/>
+                <Button Text="+"
+                        FontSize="24"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Grid.Column="2"
+                        Command="{Binding AddAreaCommand}"/>
+            </Grid>
+        </Border>
+        <ScrollView Grid.Row="1"
+                Orientation="Both"
+                BackgroundColor="#262F3C">
+            <AbsoluteLayout x:Name="MapaCanvas"
+                    WidthRequest="2000"
+                    HeightRequest="2000"
+                            BindableLayout.ItemsSource="{Binding AreasDeEnfoque}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodels:IAreaOfFocusViewModel">
+                        <Frame BackgroundColor="{Binding ColorHex}"
+                               BorderColor="{Binding ColorHex}"
+                               HasShadow="True"
+                                CornerRadius="15"
+                                Padding="20"
+                               AbsoluteLayout.LayoutBounds="{Binding PosicionX},{Binding PosicionY},{Binding Ancho},{Binding Alto}"
+                               AbsoluteLayout.LayoutFlags="None">
+                            <Label Text="{Binding Nombre}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"
+                                   HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SeleccionarAreaDeEnfoqueCommand}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+                <Line X1="975"
+                        Y1="900"
+                        X2="660"
+                        Y2="680"
+                        Stroke="Gray"
+                        StrokeThickness="2"
+                        ZIndex="-1"/>
+                <Line X1="975"
+                        Y1="900"
+                        X2="1260"
+                        Y2="690"
+                        Stroke="Gray"
+                        StrokeThickness="2"
+                        ZIndex="-1"/>
+                <Line X1="660"
+                        Y1="600"
+                        X2="450"
+                        Y2="520"
+                        Stroke="Gray"
+                        StrokeThickness="2"
+                        ZIndex="-1"/>
+            </AbsoluteLayout>
+        </ScrollView>
+        <Border Grid.Row="2"
+                BackgroundColor="#2D3B45"
+                Padding="5,0"
+                HeightRequest="60">
+            <Grid ColumnDefinitions="*,*,*,*,*">
+                <StackLayout Grid.Column="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Image Source="mapa_icon.png"
+                            HeightRequest="25"
+                            WidthRequest="25"/>
+                    <Label Text="Mapa"
+                            FontSize="10"
+                            TextColor="#78CEF0"/>
+                </StackLayout>
+
+                <Button Text="Listas"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Command="{Binding NavigateToListsCommand}"
+                        Grid.Column="1"/>
+
+                <Button Text="Cal"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Command="{Binding NavigateToCalendarCommand}"
+                        Grid.Column="2"/>
+
+                <Button Text="Hab"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Command="{Binding NavigateToHabitsCommand}"
+                        Grid.Column="3"/>
+
+                <Button Text="Conf"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Command="{Binding NavigateToSettingsCommand}"
+                        Grid.Column="4"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

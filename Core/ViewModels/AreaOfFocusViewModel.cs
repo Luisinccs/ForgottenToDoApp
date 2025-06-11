@@ -1,4 +1,4 @@
-// 2025-06-09
+/*// 2025-06-09
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -54,4 +54,4 @@ public partial class AreaOfFocusViewModel : ObservableObject, IAreaOfFocusViewMo
     }
 
     #endregion
-}
+}*/

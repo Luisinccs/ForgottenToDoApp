@@ -1,3 +1,4 @@
+/*
 // 2025-06-09
 using System.Collections.ObjectModel;
 using System.Windows.Input; 
@@ -76,4 +77,4 @@ public partial class ForgottenToDoMapViewModel : ObservableObject, IForgottenToD
     }
 
     #endregion
-}
+}*/

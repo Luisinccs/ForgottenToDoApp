@@ -1,0 +1,80 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ForgottenToDoApp.Core.ViewModels;assembly=ForgottenToDoApp.Core"
+             x:Class="ForgottenToDoApp.Views.UniversoView"
+             x:DataType="viewmodels:IUniversoViewModel"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0" BackgroundColor="#F0F0F0" Padding="10">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Button Text="☰" FontSize="24" BackgroundColor="Transparent" TextColor="Black"
+                        HorizontalOptions="Start" VerticalOptions="Center" />
+                <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" TextColor="Black"
+                       HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" />
+                <Button Text="+" FontSize="24" BackgroundColor="Transparent" TextColor="Black"
+                        HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2"
+                        Command="{Binding AddAreaCommand}" />
+            </Grid>
+        </Border>
+        <ScrollView Grid.Row="1" Orientation="Both">
+            <AbsoluteLayout x:Name="MapaCanvas" WidthRequest="2000" HeightRequest="2000" BackgroundColor="#F8F8F8">
+                <Frame BackgroundColor="#FFDDC1" BorderColor="#FF9933" HasShadow="True" CornerRadius="15" Padding="20"
+                       AbsoluteLayout.LayoutBounds="900,900,150,100" AbsoluteLayout.LayoutFlags="None">
+                    <Label Text="Universo" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+
+                <Frame BackgroundColor="#A0E6FF" BorderColor="#007ACC" HasShadow="True" CornerRadius="10" Padding="15"
+                       AbsoluteLayout.LayoutBounds="600,600,120,80" AbsoluteLayout.LayoutFlags="None">
+                    <Label Text="Proyectos" FontSize="16" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+                
+                <Frame BackgroundColor="#D1FFB3" BorderColor="#4CAF50" HasShadow="True" CornerRadius="10" Padding="15"
+                       AbsoluteLayout.LayoutBounds="1200,650,120,80" AbsoluteLayout.LayoutFlags="None">
+                    <Label Text="Aprendizaje" FontSize="16" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+
+                <Frame BackgroundColor="#C2F0FF" BorderColor="#5CADFF" HasShadow="True" CornerRadius="8" Padding="12"
+                       AbsoluteLayout.LayoutBounds="400,450,100,70" AbsoluteLayout.LayoutFlags="None">
+                    <Label Text="Proyecto 1" FontSize="14" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+
+                <Line X1="975" Y1="900" X2="660" Y2="680"
+                      Stroke="Gray" StrokeThickness="2" ZIndex="-1" AbsoluteLayout.LayoutFlags="None" />
+                
+                <Line X1="975" Y1="900" X2="1260" Y2="690"
+                      Stroke="Gray" StrokeThickness="2" ZIndex="-1" AbsoluteLayout.LayoutFlags="None" />
+                
+                <Line X1="660" Y1="600" X2="450" Y2="520"
+                      Stroke="Gray" StrokeThickness="2" ZIndex="-1" AbsoluteLayout.LayoutFlags="None" />
+
+                <Canvas.Triggers>
+                        <DataTrigger TargetType="Canvas" Binding="{Binding Conecciones}" Value="{x:Null}">
+                             <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Canvas.Triggers>
+                    </Canvas>
+                -->
+            </AbsoluteLayout>
+        </ScrollView>
+        <Border Grid.Row="2" BackgroundColor="#F0F0F0" Padding="5,0" HeightRequest="60">
+            <Grid ColumnDefinitions="*,*,*,*,*">
+                <StackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image Source="map_icon.png" HeightRequest="25" WidthRequest="25" />
+                    <Label Text="Mapa" FontSize="10" TextColor="Blue" />
+                </StackLayout>
+
+                <Button Text="Lista" BackgroundColor="Transparent" TextColor="Black"
+                        Command="{Binding NavigateToListsCommand}" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                <Button Text="Cal" BackgroundColor="Transparent" TextColor="Black"
+                        Command="{Binding NavigateToCalendarCommand}" Grid.Column="2" VerticalOptions="Fill" HorizontalOptions="Fill" />
+
+                <Button Text="Hab" BackgroundColor="Transparent" TextColor="Black"
+                        Command="{Binding NavigateToHabitsCommand}" Grid.Column="3" VerticalOptions="Fill" HorizontalOptions="Fill" />
+
+                <Button Text="Conf" BackgroundColor="Transparent" TextColor="Black"
+                        Command="{Binding NavigateToSettingsCommand}" Grid.Column="4" VerticalOptions="Fill" HorizontalOptions="Fill" />
+            </Grid>
+        </Border>
+        </Grid>
+</ContentPage>

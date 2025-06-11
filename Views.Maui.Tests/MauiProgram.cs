@@ -1,13 +1,14 @@
 ﻿// 2025-06-10
-using ForgottenToDo.UI.Maui;
-using ForgottenToDoApp.App.Maui.Tests;
+using ForgottenToDoApp.Views.Maui;
+using ForgottenToDoApp.Mocks;
+
 namespace ForgottenToDoApp.Views.Maui.Tests;
 
 public class App : Application {
 
 	public App() {
 		// Prueba actual
-		MainPage = new ForgottenToDoMapPage(new MockForgottenToDoMapViewModel());
+		MainPage = new MapPage(new MockMapViewModel());
 		// Otras pruebas
 		//MainPage = new ...;
 	}

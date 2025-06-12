@@ -1,12 +1,15 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgottenToDoApp.Core", "Core\ForgottenToDoApp.Core.csproj", "{B2435139-CCA9-4137-BD66-DA0EE92E4661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Views.Maui.Tests", "Views.Maui.Tests\ForgottenToDoApp.Views.Maui.Tests.csproj", "{ABBFF774-2488-4F57-B46D-C67AC06DBB37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Views.Ios.Tests.Catalyst", "Views.Ios.Tests.Catalyst\ForgottenToDoApp.Views.Ios.Tests.Catalyst.csproj", "{947DEE0D-9902-4923-868F-3EC1CCDE114C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Views.Maui", "Views.Maui\ForgottenToDoApp.Views.Maui.csproj", "{2D808607-95E1-45E6-B344-9B06D137F9DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Views.Ios", "Views.Ios\ForgottenToDoApp.Views.Ios.csproj", "{08EBE475-FD52-402C-B767-B83C30C4333E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgottenToDoApp.Views.CommonTestHelpers", "CommonTestHelpers\ForgottenToDoApp.Views.CommonTestHelpers.csproj", "{07ABAF16-C7EA-4F8C-8996-2EC0B3F31553}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +21,18 @@ Global
 		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2435139-CCA9-4137-BD66-DA0EE92E4661}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABBFF774-2488-4F57-B46D-C67AC06DBB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABBFF774-2488-4F57-B46D-C67AC06DBB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABBFF774-2488-4F57-B46D-C67AC06DBB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABBFF774-2488-4F57-B46D-C67AC06DBB37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D808607-95E1-45E6-B344-9B06D137F9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D808607-95E1-45E6-B344-9B06D137F9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D808607-95E1-45E6-B344-9B06D137F9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D808607-95E1-45E6-B344-9B06D137F9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947DEE0D-9902-4923-868F-3EC1CCDE114C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947DEE0D-9902-4923-868F-3EC1CCDE114C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947DEE0D-9902-4923-868F-3EC1CCDE114C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{947DEE0D-9902-4923-868F-3EC1CCDE114C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{08EBE475-FD52-402C-B767-B83C30C4333E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EBE475-FD52-402C-B767-B83C30C4333E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EBE475-FD52-402C-B767-B83C30C4333E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EBE475-FD52-402C-B767-B83C30C4333E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07ABAF16-C7EA-4F8C-8996-2EC0B3F31553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07ABAF16-C7EA-4F8C-8996-2EC0B3F31553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07ABAF16-C7EA-4F8C-8996-2EC0B3F31553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07ABAF16-C7EA-4F8C-8996-2EC0B3F31553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 // Se elimina: using Microsoft.Maui.Graphics; // No se necesita para un ViewModel agnostico
 using ForgottenToDoApp.ViewModels; // Usando el namespace de tus interfaces de ViewModel
 
-namespace ForgottenToDoApp.Mocks; // Namespace para los mocks
+namespace ForgottenToDoApp.Views.CommonTestHelpers; // Namespace para los mocks
 
 /// <sum>MockAreaOfFocusViewModel: Implementacion de prueba para IAreaOfFocusViewModel.</sum>
 public class MockAreaOfFocusViewModel : IAreaOfFocusViewModel {
@@ -18,10 +18,10 @@ public class MockAreaOfFocusViewModel : IAreaOfFocusViewModel {
 	public ObservableCollection<IAreaOfFocusViewModel> SubAreas { get; }
 
 	/// <sum>PosicionX: Coordenada X del area de enfoque en el mapa.</sum>
-	public double PosicionX { get; }
+	public double PosicionX { get; set; }
 
 	/// <sum>PosicionY: Coordenada Y del area de enfoque en el mapa.</sum>
-	public double PosicionY { get; }
+	public double PosicionY { get; set; }
 
 	/// <sum>Ancho: Ancho del nodo en el mapa.</sum>
 	public double Ancho { get; }

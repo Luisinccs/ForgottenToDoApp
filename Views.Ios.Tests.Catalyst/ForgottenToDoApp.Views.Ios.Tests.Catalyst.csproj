@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RootNamespace>ForgottenToDoApp.Views.Ios.Tests</RootNamespace>
+        <ApplicationTitle>ForgottenToDoApp.Views.Tests</ApplicationTitle>
+        <ApplicationId>com.company.forgottentodoapptests</ApplicationId>
+        <ApplicationIdGuid>$(ApplicationIdGuid)</ApplicationIdGuid>
+        <TargetFramework>net8.0-maccatalyst</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
+        <Configurations>Debug</Configurations>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DefineConstants>__MACCATALYST__;__IOS__;__MOBILE__;__UNIFIED__;TRACE;DEBUG;NET;NET8_0;NETCOREAPP</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Core\ForgottenToDoApp.Core.csproj" />
+        <ProjectReference Include="..\CommonTestHelpers\ForgottenToDoApp.Views.CommonTestHelpers.csproj" />
+        <ProjectReference Include="..\Views.Ios\ForgottenToDoApp.Views.Ios.csproj" />
+    </ItemGroup>
+</Project>

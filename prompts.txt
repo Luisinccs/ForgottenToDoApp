@@ -40,3 +40,7 @@ Bien, pasemos ahora a la vista de calendario,
 
 Bien, Tomando en cuenta el diseño y los requerimientos, procede a generar al vista UniversoView.xaml con su UniversoView.xaml.cs. Toma en cuenta tambien, que tanto la barra superior como la barra inferior, van a ser comunes a las otras vistas.
 El archivo debe depender unicamente del IUiversioViewModel.cs 
+
+Bien, vamos a hacer una cosa mejor, porque maui tarda mucho tiempo en compilar y es un factisio; por ahora voy a hacer las aplicaciones nativas en su plataforma, en el caso de mac voy a hacer una app catalyst; así que voy a hacer los respectivos proyectos Views.Mac y Views.Mac.Tests; ademas voy a llevar los mock viewmodels a otro proyecto aparte para compartir: Views.CommonTestHelpers. Y los IViewModels tambien quero segregarlos, dejar el "Canvas" del mapa en un solo IViewModel, ya que los botones de navegación podrían ser compartidos.
+
+Bien, varias cosas, el centro no se ve centrado, porque el canvas es mas grande que la vista y comienza en la esquina superior izquierda. Debemos iniciar con un canvas que ocupe solo el epacio de la vista, el usuario podrá hacer zoom. Segundo las líneas se ven desde el centro de la vista de area de enfoque, estéticamente se deberían ver solo hasta el borde; y estan arrancado todas las vistas en una posición relativamente agrupadas, si son cuatro, deben arrancar de momento en los cuatro puntos cardinales

@@ -1,36 +1,24 @@
-// 2025-06-11
+// 2025-06-12
 
 using System.Collections.ObjectModel;
-using System.Windows.Input; // Para ICommand
+using System.Windows.Input; 
 
 namespace ForgottenToDoApp.ViewModels;
 
-/// <sum>Interfaz para el ViewModel del mapa principal de ForgottenToDoApp.</sum>
+/// <summary>Interfaz para el ViewModel del mapa principal de ForgottenToDoApp.</summary>
 public interface IMapViewModel {
-	/// <sum>Title: Titulo del mapa.</sum>
-	string Title { get; }
 
-	/// <sum>Coleccion de las areas de enfoque principales a mostrar en el mapa.</sum>
-	ObservableCollection<IAreaOfFocusViewModel> AreasDeEnfoque { get; }
+    /// <summary>Titulo del mapa.</summary>
+    string Title { get; } // El título podría ser específico del mapa
 
-	/// <sum>Comando para cuando se selecciona un area de enfoque en el mapa.</sum>
-	ICommand SeleccionarAreaDeEnfoqueCommand { get; }
+    /// <summary>Coleccion de las areas de enfoque principales a mostrar en el mapa.</summary>
+    ObservableCollection<IAreaOfFocusViewModel> AreasDeEnfoque { get; }
 
-	/// <sum>Comando para cargar los datos iniciales del mapa.</sum>
-	ICommand CargarMapaCommand { get; }
+    /// <summary>Comando para cuando se selecciona un area de enfoque en el mapa.</summary>
+    ICommand SeleccionarAreaDeEnfoqueCommand { get; }
 
-	/// <sum>AddAreaCommand: Comando para añadir una nueva area.</sum>
-	ICommand AddAreaCommand { get; }
+    /// <summary>Comando para cargar los datos iniciales del mapa.</summary>
+    ICommand CargarMapaCommand { get; }
 
-	/// <sum>NavigateToListsCommand: Comando para navegar a la vista de listas.</sum>
-	ICommand NavigateToListsCommand { get; }
-
-	/// <sum>NavigateToCalendarCommand: Comando para navegar a la vista de calendario.</sum>
-	ICommand NavigateToCalendarCommand { get; }
-
-	/// <sum>NavigateToHabitsCommand: Comando para navegar a la vista de habitos.</sum>
-	ICommand NavigateToHabitsCommand { get; }
-
-	/// <sum>NavigateToSettingsCommand: Comando para navegar a la vista de configuracion.</sum>
-	ICommand NavigateToSettingsCommand { get; }
+    // Los comandos de navegacion y AddAreaCommand seran movidos a IAppShellViewModel
 }

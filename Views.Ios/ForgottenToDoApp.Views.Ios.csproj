@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<SupportedOSPlatformVersion>13.2</SupportedOSPlatformVersion>
+		<TargetFrameworks>net8.0-maccatalyst;net8.0-ios</TargetFrameworks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
+		<DefineConstants>__TOUCH__</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">
+		<DefineConstants>__MACCATALYST__</DefineConstants>
+	</PropertyGroup>	
+    <ItemGroup>
+        <ProjectReference Include="..\Core\ForgottenToDoApp.Core.csproj" />
+        <ProjectReference Include="..\CommonTestHelpers\ForgottenToDoApp.Views.CommonTestHelpers.csproj" />
+    </ItemGroup>
+</Project>

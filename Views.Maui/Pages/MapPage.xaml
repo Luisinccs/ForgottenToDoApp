@@ -17,12 +17,12 @@
                         HorizontalOptions="Start"
                         VerticalOptions="Center"/>
                 <Label Text="{Binding Title}"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Grid.Column="1"/>
+                       VerticalOptions="Center"
+                       Grid.Column="1"/>
                 <Button Text="+"
                         FontSize="24"
                         BackgroundColor="Transparent"
@@ -34,40 +34,51 @@
             </Grid>
         </Border>
         <ScrollView Grid.Row="1"
-                Orientation="Both"
-                BackgroundColor="#262F3C">
+                    Orientation="Both"
+                    BackgroundColor="#262F3C">
             <AbsoluteLayout x:Name="MapaCanvas"
-                    WidthRequest="2000"
-                    HeightRequest="2000"
+                            WidthRequest="2000"
+                            HeightRequest="2000"
+                            BackgroundColor="LightGray"
                             BindableLayout.ItemsSource="{Binding AreasDeEnfoque}">
-                <BindableLayout.ItemTemplate>
+                <!-- <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="viewmodels:IAreaOfFocusViewModel">
                         <Frame BackgroundColor="{Binding ColorHex}"
                                BorderColor="{Binding ColorHex}"
-                               HasShadow="True"
-                                CornerRadius="15"
-                                Padding="20"
+                               HasShadow="True" CornerRadius="15" Padding="20"
                                AbsoluteLayout.LayoutBounds="{Binding PosicionX},{Binding PosicionY},{Binding Ancho},{Binding Alto}"
                                AbsoluteLayout.LayoutFlags="None">
-                            <Label Text="{Binding Nombre}"
-                                    FontSize="16"
-                                    FontAttributes="Bold"
-                                    TextColor="Black"
-                                   HorizontalOptions="Center"
-                                    VerticalOptions="Center"/>
+                            <Label Text="{Binding Nombre}" FontSize="16" FontAttributes="Bold" TextColor="Black"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SeleccionarAreaDeEnfoqueCommand}"
-                                                      CommandParameter="{Binding .}"/>
+                                                      CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
+                </BindableLayout.ItemTemplate> -->
 
-                <Line X1="975"
-                        Y1="900"
-                        X2="660"
-                        Y2="680"
-                        Stroke="Gray"
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="10,10,100,100"
+                        AbsoluteLayout.LayoutFlags="None"
+                                     BackgroundColor="Orange"
+                        Padding="5">
+                    <BoxView Color="Red"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"/>
+                    <Label Text="TEST 10,10 - VER!"
+                            TextColor="Black"
+                            BackgroundColor="Yellow"
+                            FontSize="14"
+                            FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <!-- <Line X1="10"
+                        Y1="10"
+                        X2="60"
+                        Y2="60"
+                        Stroke="Blue"
                         StrokeThickness="2"
                         ZIndex="-1"/>
                 <Line X1="975"
@@ -83,7 +94,7 @@
                         Y2="520"
                         Stroke="Gray"
                         StrokeThickness="2"
-                        ZIndex="-1"/>
+                        ZIndex="-1"/> -->
             </AbsoluteLayout>
         </ScrollView>
         <Border Grid.Row="2"
@@ -92,14 +103,14 @@
                 HeightRequest="60">
             <Grid ColumnDefinitions="*,*,*,*,*">
                 <StackLayout Grid.Column="0"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center">
                     <Image Source="mapa_icon.png"
-                            HeightRequest="25"
-                            WidthRequest="25"/>
+                           HeightRequest="25"
+                           WidthRequest="25"/>
                     <Label Text="Mapa"
-                            FontSize="10"
-                            TextColor="#78CEF0"/>
+                           FontSize="10"
+                           TextColor="#78CEF0"/>
                 </StackLayout>
 
                 <Button Text="Listas"
